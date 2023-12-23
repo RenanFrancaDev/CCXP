@@ -1,31 +1,30 @@
-const day = document.getElementById("day")
-const hour = document.getElementById("hour")
-const minute = document.getElementById("minute")
-const second = document.getElementById("second")
+const day = document.getElementById("day");
+const hour = document.getElementById("hour");
+const minute = document.getElementById("minute");
+const second = document.getElementById("second");
 
-const launch = "01 dec 2023"
+const launch = "01 dec 2024";
 
 function countDown() {
-    const launchDate = new Date(launch)
-    const today = new Date
+  const launchDate = new Date(launch);
+  const today = new Date();
 
-    const totalSeconds = (launchDate - today) / 1000;
+  const totalSeconds = (launchDate - today) / 1000;
 
+  const finalDays = Math.floor(totalSeconds / 60 / 60 / 24);
+  const finalHours = Math.floor(totalSeconds / 60 / 60) % 24;
+  const finalMinutes = Math.floor(totalSeconds / 60) % 60;
+  const finalSeconds = Math.floor(totalSeconds) % 60;
 
-    const finalDays = Math.floor(totalSeconds / 60 / 60 / 24)
-    const finalHours = Math.floor(totalSeconds / 60 / 60) % 24
-    const finalMinutes = Math.floor(totalSeconds / 60) % 60
-    const finalSeconds = Math.floor(totalSeconds) % 60
-
-    day.innerHTML = `${formatTime(finalDays)}D`
-    hour.innerHTML = `${formatTime(finalHours)}H`
-    minute.innerHTML = `${formatTime(finalMinutes)}M`
-    second.innerHTML = `${formatTime(finalSeconds)}S`
+  day.innerHTML = `${formatTime(finalDays)}D`;
+  hour.innerHTML = `${formatTime(finalHours)}H`;
+  minute.innerHTML = `${formatTime(finalMinutes)}M`;
+  second.innerHTML = `${formatTime(finalSeconds)}S`;
 }
 
 function formatTime(time) {
-    return time < 10? `0${time}`:time
+  return time < 10 ? `0${time}` : time;
 }
 
-countDown()
-setInterval(countDown, 1000)
+countDown();
+setInterval(countDown, 1000);
